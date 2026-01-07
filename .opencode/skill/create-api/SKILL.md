@@ -11,18 +11,18 @@ chains_to:
 
 # Skill: Create API
 
-> Design and implement RESTful APIs following NexusOS Hub patterns and conventions.
+> Design and implement RESTful APIs following clean architecture patterns and conventions.
 
 ---
 
 ## Purpose
 
-Guide the complete process of designing and implementing a RESTful API, from endpoint definition to tests and documentation. Follows Hub architectural patterns (Routes -> Services -> Repositories).
+Guide the complete process of designing and implementing a RESTful API, from endpoint definition to tests and documentation. Follows clean architectural patterns (Routes -> Services -> Repositories).
 
 **Use when**:
 - Creating new API endpoints
 - Implementing CRUD for a resource
-- Adding new module to the Hub
+- Adding new module to the backend
 - Refactoring existing API
 
 ---
@@ -56,10 +56,10 @@ For complex modules:
 ## Main Prompt
 
 ```
-Perform a **comprehensive API design and implementation** for a new or existing endpoint/module in the NexusOS Backend.
+Perform a **comprehensive API design and implementation** for a new or existing endpoint/module in your backend.
 
 ## Target Module
-[Specify the module path, e.g., `hub/src/modules/notifications`]
+[Specify the module path, e.g., `src/modules/notifications`]
 
 ## API Scope
 [Describe the resource and actions, e.g., "CRUD for user notifications"]
@@ -131,15 +131,15 @@ Perform a **comprehensive API design and implementation** for a new or existing 
 ---
 
 ## Constraints
--   **Follow Hub Conventions**: Match `hub/src/modules/` patterns
--   **Use @nexus/logger**: No console.log
+-   **Follow Project Conventions**: Match existing `src/modules/` patterns
+-   **Use structured logging**: No console.log
 -   **Validate Everything**: All input through Zod
 -   **Thin Routes**: Only parse, call services, respond
 ```
 
 ---
 
-## Hub Architecture Patterns
+## Architecture Patterns
 
 ### File Structure
 ```

@@ -487,7 +487,7 @@ instance:
   
 inputs:
   requirement: "Add dark mode toggle to settings panel"
-  component: "system52/settings"
+  component: "frontend/settings"
   
 current_step: "implement-core"
 completed_steps:

@@ -12,7 +12,7 @@
 ## 1. Documentation Standards
 
 <!-- @RULE: What must be documented -->
-All code and systems in the Nexus OS Monorepo must adhere to the following documentation coverage standards.
+All code and systems in the monorepo must adhere to the following documentation coverage standards.
 
 ### 1.1 Core Components
 - **Architecture**: High-level design, data flow, and dependency graphs.
@@ -46,7 +46,7 @@ Create an `AGENTS.md` when:
 ## 3. README Standards
 
 <!-- @RULE: README Structure -->
-Every project root (e.g., `vibeos-react`, `backend`) MUST have a `README.md`.
+Every project root (e.g., `frontend`, `backend`) MUST have a `README.md`.
 
 ### 3.1 Template
 ```markdown
@@ -147,49 +147,30 @@ We track the following metrics to ensure compliance:
 | Path | Status | Last Review | Score | Missing | Action Items |
 |------|--------|-------------|-------|---------|--------------|
 | `AGENTS.md` | **COMPLIANT** | 2026-01-07 | 100% | None | Maintain as master |
-| `backend/AGENTS.md` | **PARTIAL** | 2025-12-18 | 70% | API Docs, Changelog | Add OpenAPI spec link |
-| `backend/hub/AGENTS.md` | **PARTIAL** | 2025-12-18 | 65% | WebSocket Protocol | Document WS events |
+| `backend/AGENTS.md` | **PARTIAL** | - | 70% | API Docs, Changelog | Add OpenAPI spec link |
 
-### vibeos-react (System 42 - Kernel)
+### Frontend
 | Path | Status | Last Review | Score | Missing | Action Items |
 |------|--------|-------------|-------|---------|--------------|
-| `vibeos-react/AGENTS.md` | **COMPLIANT** | 2026-01-07 | 95% | None | Update version |
-| `vibeos-react/system42/kernel/AGENTS.md` | **PARTIAL** | Unknown | 60% | Bus Logic diagrams | Add Mermaid graphs |
-| `vibeos-react/system42/services/AGENTS.md` | **PARTIAL** | Unknown | 50% | Provider Interfaces | Doc Service interfaces |
-| `vibeos-react/system42/filesystem/AGENTS.md`| **PARTIAL** | Unknown | 55% | VFS permissions | Document ACL system |
-| `vibeos-react/system42/process/AGENTS.md` | **PARTIAL** | Unknown | 50% | Lifecycle states | State machine diagram |
-| `vibeos-react/system42/security/AGENTS.md` | **NON-COMPLIANT**| Unknown | 30% | Crypto implementation | Audit security docs |
-| `vibeos-react/system42/ui/AGENTS.md` | **PARTIAL** | Unknown | 40% | Component Library | Storybook links |
-
-### vibeos-react (System 52 - Userland)
-| Path | Status | Last Review | Score | Missing | Action Items |
-|------|--------|-------------|-------|---------|--------------|
-| `vibeos-react/system52/apps/AGENTS.md` | **PARTIAL** | Unknown | 40% | App manifest specs | Define App schema |
-| `vibeos-react/system52/services/AGENTS.md` | **PARTIAL** | Unknown | 40% | User services list | List default services |
-| `vibeos-react/system52/runtime/AGENTS.md` | **PARTIAL** | Unknown | 45% | WebContainer security | Doc isolation model |
-| `vibeos-react/system52/hub/AGENTS.md` | **PARTIAL** | Unknown | 60% | WebRTC signaling | Doc ICE flow |
+| `frontend/AGENTS.md` | **PARTIAL** | - | 60% | Component docs | Add diagrams |
 
 ### Agents & Resources
 | Path | Status | Last Review | Score | Missing | Action Items |
 |------|--------|-------------|-------|---------|--------------|
-| `resources/leonidas/AGENTS.md` | **COMPLIANT** | 2026-01-07 | 98% | None | Keep updated |
-| `resources/leonidas2/AGENTS.md` | **DEPRECATED**| 2025-12-18 | N/A | Superseded | Archive file |
+| `.opencode/agent/*.md` | **COMPLIANT** | 2026-01-07 | 98% | None | Keep updated |
 
 ### Vendors & Frameworks (External)
 | Path | Status | Notes |
 |------|--------|-------|
-| `vendors/agents/opencode/**` | **EXTERNAL** | Managed by OpenCode vendor |
-| `vendors/agents-frameworks/**` | **EXTERNAL** | Third-party framework docs |
-| `wiki/agents-deep-dive/**` | **INFORMATIONAL**| Research notes, not normative |
+| `vendors/**` | **EXTERNAL** | Third-party framework docs |
 
 ### Summary Statistics
-- **Total Tracked Files**: 25
-- **Compliant**: 3 (12%)
-- **Partial**: 12 (48%)
-- **Non-Compliant**: 1 (4%)
-- **External/Deprecated**: 9 (36%)
+- **Total Tracked Files**: TBD (project-specific)
+- **Compliant**: TBD
+- **Partial**: TBD
+- **Non-Compliant**: TBD
 
 ### Global Action Plan
-1.  **Phase 1 (Immediate)**: Update `backend/hub` and `system52/hub` to secure WebRTC knowledge.
-2.  **Phase 2 (This Sprint)**: Audit `system42` kernel documentation for architecture drift.
-3.  **Phase 3 (Next Sprint)**: Standardize all `Partial` files with new headers and Semantic Notes.
+1.  **Phase 1 (Immediate)**: Audit all core modules for AGENTS.md presence.
+2.  **Phase 2 (This Sprint)**: Standardize all `Partial` files with new headers.
+3.  **Phase 3 (Next Sprint)**: Add Mermaid diagrams for architecture.

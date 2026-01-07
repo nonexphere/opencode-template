@@ -11,7 +11,7 @@ chains_to:
 
 # Skill: Migrate Database
 
-> Schema analysis, Drizzle migration creation, and data integrity validation for NexusOS backend.
+> Schema analysis, Drizzle migration creation, and data integrity validation for backend systems.
 
 ---
 
@@ -57,7 +57,7 @@ For breaking changes:
 ## Main Prompt
 
 ```
-Perform a **database schema analysis and migration** for the NexusOS Backend using Drizzle ORM.
+Perform a **database schema analysis and migration** using Drizzle ORM.
 
 ## Target
 [Specify the change, e.g., "Add notifications table" or "Add index to users.email"]
@@ -68,7 +68,7 @@ Perform a **database schema analysis and migration** for the NexusOS Backend usi
 ---
 
 ## Phase 1: Current State Analysis (PLANNING Mode)
-1.  **Review Existing Schema**: Examine `packages/db/src/schema/*.ts`
+1.  **Review Existing Schema**: Examine `src/db/schema/*.ts` or equivalent
 2.  **Identify Relationships**: Map foreign keys and dependencies
 3.  **Check for Conflicts**: Ensure no naming conflicts
 4.  **Document**:
@@ -79,12 +79,12 @@ Perform a **database schema analysis and migration** for the NexusOS Backend usi
 ---
 
 ## Phase 2: Schema Definition (EXECUTION Mode)
-1.  **Create/Modify Schema File** in `packages/db/src/schema/`
+1.  **Create/Modify Schema File** in `src/db/schema/`
     -   [ ] Define table with Drizzle syntax
     -   [ ] Add constraints (primaryKey, notNull, unique)
     -   [ ] Define foreign keys with references()
     -   [ ] Add indexes for queried columns
-2.  **Export from Index**: Update `packages/db/src/schema/index.ts`
+2.  **Export from Index**: Update `src/db/schema/index.ts`
 3.  **Define Relations** if applicable
 
 ---
@@ -119,15 +119,15 @@ Perform a **database schema analysis and migration** for the NexusOS Backend usi
 3.  **Add/Update Repository Tests**
 4.  **Build Verification**:
     ```bash
-    pnpm build --filter @nexus/db
-    pnpm test --filter @nexus/db
+    pnpm build
+    pnpm test
     ```
 
 ---
 
 ## Expected Deliverables
-1.  Updated schema in `packages/db/src/schema/`
-2.  Generated migration in `packages/db/drizzle/`
+1.  Updated schema in `src/db/schema/`
+2.  Generated migration in `drizzle/`
 3.  Updated exports
 4.  Tests pass
 5.  Rollback documentation

@@ -19,7 +19,7 @@ description: The master engine specifications for OpenCode agent operations
 # Skill: OpenCode Engine Specifications
 
 <!-- @NOTE(spec-def): Definition -->
-> The master engine specifications for OpenCode agent operations, acting as the primary development intelligence for Nexus OS.
+> The master engine specifications for OpenCode agent operations.
 
 ---
 
@@ -121,7 +121,7 @@ This skill provides the comprehensive specification for OpenCode operations:
 ## 1. Introdução e Contexto Estratégico
 
 <!-- @NOTE(intro): Context -->
-O OpenCode não é apenas um assistente de IA ou um chatbot; ele é a **Engine de Desenvolvimento (DevEngine)** central deste ecossistema. Ele atua como a camada de execução e inteligência que reside entre o desenvolvedor humano e a infraestrutura do projeto (Nexus OS).
+O OpenCode não é apenas um assistente de IA ou um chatbot; ele é a **Engine de Desenvolvimento (DevEngine)** central do seu projeto. Ele atua como a camada de execução e inteligência que reside entre o desenvolvedor humano e a infraestrutura do projeto.
 
 ### O Papel do OpenCode na Engine
 

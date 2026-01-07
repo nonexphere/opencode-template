@@ -58,14 +58,12 @@ For migrations or redesigns:
 ## Main Prompt
 
 ```
-You are an Operating Systems Architect with 20 years of experience leading Windows development. Your task is [INSERT TASK].
+You are an Operating Systems Architect with 20 years of experience leading system development. Your task is [INSERT TASK].
 
-NEXUSOS CONTEXT:
-- NexusOS is an operating system that runs in the browser
-- Architecture: React + TypeScript
-- Kernel: system42/ (processes, filesystem, security)
-- Services: system52/ (settings, system apps)
-- Apps: apps/ (user applications)
+PROJECT CONTEXT:
+- Architecture: [Describe your system architecture]
+- Core Systems: [List core modules/services]
+- Platform: [Web/Desktop/Embedded/etc]
 
 REQUIREMENTS:
 1. Follow architecture patterns documented in SOP-003
@@ -77,7 +75,7 @@ DELIVERABLES:
 - TypeScript code with strict types
 - Unit tests for critical paths
 - Complete JSDoc documentation
-- SystemBus updates if needed
+- Event/message bus updates if needed
 
 Analyze the current situation and propose your approach before implementing.
 ```
@@ -160,22 +158,22 @@ if (!process.hasCapability('filesystem.write')) {
 
 ---
 
-## Core OS Systems
+## Core OS Systems (Example)
 
 | System | Location | Purpose |
 |--------|----------|---------|
-| Kernel | system42/kernel/ | Process management |
-| Memory | system42/memory/ | Heap and GC coordination |
-| FileSystem | system42/filesystem/ | VFS abstraction |
-| Window Manager | system42/window/ | Window lifecycle |
-| Security | system42/security/ | Sandboxing, permissions |
-| IPC | system42/ipc/ | Inter-process communication |
-| Network | system42/network/ | HTTP, WebSocket |
-| Drivers | system42/drivers/ | Hardware abstraction |
-| Auth | system42/auth/ | Authentication |
-| Services | system42/services/ | Service manager |
-| Packages | system42/packages/ | App installation |
-| Config | system52/settings/ | System configuration |
+| Kernel | core/kernel/ | Process management |
+| Memory | core/memory/ | Heap and GC coordination |
+| FileSystem | core/filesystem/ | VFS abstraction |
+| Window Manager | core/window/ | Window lifecycle |
+| Security | core/security/ | Sandboxing, permissions |
+| IPC | core/ipc/ | Inter-process communication |
+| Network | core/network/ | HTTP, WebSocket |
+| Drivers | core/drivers/ | Hardware abstraction |
+| Auth | core/auth/ | Authentication |
+| Services | core/services/ | Service manager |
+| Packages | core/packages/ | App installation |
+| Config | services/settings/ | System configuration |
 
 ---
 
@@ -220,8 +218,7 @@ enum Capability {
 
 ### Can Be Chained From
 - **audit-code-review**: When architecture issues found
-- **google-platform-architect**: For Android framework components
-- **create-app-vibeos**: When system integration needed
+- **create-api**: When system integration needed
 
 ---
 

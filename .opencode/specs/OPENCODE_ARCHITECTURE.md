@@ -10,7 +10,7 @@
 -->
 
 <!-- @NOTE(arch-001): Scope -->
-> Comprehensive architecture documentation for the OpenCode agent orchestration system within NexusOS.
+> Comprehensive architecture documentation for the OpenCode agent orchestration system.
 
 ---
 
@@ -117,8 +117,8 @@ The OpenCode system provides an **AI-powered development environment** that:
 <!-- @REF(.opencode/agents/README.md): Agent Definitions -->
 ```mermaid
 flowchart TD
-    subgraph Founder["Human Layer"]
-        F[Guilherme<br/>Founder]
+    subgraph Owner["Human Layer"]
+        F[Project Owner]
     end
     
     subgraph Orchestration["Orchestration Layer"]

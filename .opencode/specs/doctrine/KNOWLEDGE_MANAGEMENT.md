@@ -1,4 +1,4 @@
-# NexusOS Knowledge Management System (KMS)
+# Knowledge Management System (KMS)
 
 <!-- @META: System-wide Knowledge Strategy & Map -->
 <!--
@@ -14,7 +14,7 @@
 ## 1. Knowledge Strategy
 
 <!-- @NOTE(strategy-001): The "Why" behind our documentation -->
-At NexusOS, documentation is not an afterthought—it is the **primary interface for Artificial Intelligence**. We invest in a rigorous Knowledge Management System (KMS) to achieve three strategic goals:
+Documentation is not an afterthought—it is the **primary interface for Artificial Intelligence**. We invest in a rigorous Knowledge Management System (KMS) to achieve three strategic goals:
 
 1.  **Context Maximization**: Reduce "hallucinations" by providing structured, semantic context to agents.
 2.  **Autonomous Evolution**: Enable agents to learn new capabilities by reading the wiki, not just the code.
@@ -46,7 +46,7 @@ All research activities must follow this standardized protocol to ensure consist
 ### Phase 2: Analysis
 *Objective: Understand the mechanics.*
 - **Step 1**: Identify "Core Primitives" (e.g., Chains in LangChain, Nodes in LlamaIndex).
-- **Step 2**: Map these primitives to NexusOS concepts (e.g., does "Chain" = "Task"?).
+- **Step 2**: Map these primitives to project concepts (e.g., does "Chain" = "Task"?).
 - **Step 3**: Run "Hello World" examples to verify claims.
 - **Step 4**: Document "Gotchas" and "limitations" explicitly.
 
@@ -93,7 +93,7 @@ Targeted tracks for different agent roles. Agents should "read" these paths to u
 #### 🟣 Path C: Frontend Specialist
 *Focus: UI, UX, Client State*
 1.  **Foundations**: React & Hooks (L4)
-2.  **Core**: VibeOS Shell Architecture (L3)
+2.  **Core**: Shell Architecture (L3)
 3.  **Advanced**: Client-side AI integration (L2)
 4.  **Mastery**: WASM & Performance (L3)
 
@@ -149,7 +149,7 @@ When selecting external tools/frameworks:
 | **Maturity** | **L4 (Expert)** | We have mastered Chain-of-Thought and ReAct. |
 | **Coverage** | 90% | Most major techniques documented. |
 | **Quality** | 9/10 | High-quality examples and patterns. |
-| **Status** | ✅ **Done** | Implemented in System52. |
+| **Status** | ✅ **Done** | Implemented in production. |
 | **Value** | 🔴 **Critical** | Fundamental to all agents. |
 | **Updated** | 2025-12 | |
 
@@ -208,7 +208,7 @@ When selecting external tools/frameworks:
 | **Coverage** | 60% | WebRTC needs better docs. |
 | **Quality** | 7/10 | MCP specs are good, custom protocols vague. |
 | **Status** | 🔄 **Implementing** | Rolling out MCP servers. |
-| **Value** | 🔴 **Critical** | The nervous system of NexusOS. |
+| **Value** | 🔴 **Critical** | The nervous system of the platform. |
 | **Updated** | 2025-11 | |
 
 ---
@@ -224,7 +224,7 @@ When selecting external tools/frameworks:
 
 ### Phase 2: Context & Memory (Q1 2026) 🔄
 - [ ] Finalize Context Engineering specs (Reach L4)
-- [ ] Implement Graph Memory in System52
+- [ ] Implement Graph Memory in production
 - [ ] Standardize MCP integration
 - [ ] Build "Memory Visualizer" tool
 

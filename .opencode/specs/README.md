@@ -3,13 +3,13 @@
 <!-- @META: Specifications Master Index -->
 <!--
     File: .opencode/specs/README.md
-    Version: 1.0.0
+    Version: 2.0.0
     Created: 2026-01-07
     Updated: 2026-01-07
-    Scope: Master index for all OpenCode and NexusOS specifications
+    Scope: Master index for all OpenCode specifications
 -->
 
-> **This directory contains all architecture specifications, doctrine documents, and governance policies for the OpenCode agent system and NexusOS project.**
+> **This directory contains all architecture specifications, doctrine documents, and governance policies for the OpenCode agent system.**
 
 ---
 
@@ -17,9 +17,9 @@
 
 | Category | Description | Count |
 |----------|-------------|-------|
-| [Root Specs](#root-specifications) | Core OpenCode system specs | 5 |
-| [Architecture](#architecture) | Platform-specific architecture | 3 |
-| [Doctrine](#doctrine) | Enterprise strategy and standards | 3 |
+| [Root Specs](#root-specifications) | Core OpenCode system specs | 6 |
+| [Architecture](#architecture) | Platform-specific architecture | 2 |
+| [Doctrine](#doctrine) | Standards and knowledge management | 2 |
 | [Governance](#governance) | RFC and spec management | 1 |
 | [Diagrams](#diagrams) | Mermaid architecture diagrams | 4 |
 
@@ -32,7 +32,7 @@
 | Spec | Description | Status |
 |------|-------------|--------|
 | [OPENCODE_ARCHITECTURE.md](./OPENCODE_ARCHITECTURE.md) | Complete OpenCode agent orchestration architecture | Live |
-| [ORCHESTRATION_ARCHITECTURE.md](./ORCHESTRATION_ARCHITECTURE.md) | Three-tier orchestration model (Genesis → Leonidas → Specialists) | Live |
+| [ORCHESTRATION_ARCHITECTURE.md](./ORCHESTRATION_ARCHITECTURE.md) | Three-tier orchestration model (Orchestrator -> Leonidas -> Specialists) | Live |
 | [AGENTS_SKILLS_ARCHITECTURE.md](./AGENTS_SKILLS_ARCHITECTURE.md) | Agent and skill definitions and patterns | Live |
 | [WORKFLOW_PATTERNS.md](./WORKFLOW_PATTERNS.md) | Workflow engine patterns and customization | Live |
 | [AVAILABLE_MODELS.md](./AVAILABLE_MODELS.md) | AI model reference (Gemini, Claude via Antigravity) | Live |
@@ -48,7 +48,6 @@ Directory: `./architecture/`
 
 | Spec | Description | Domain |
 |------|-------------|--------|
-| [VIBEOS_REACT_ARCHITECTURE.md](./architecture/VIBEOS_REACT_ARCHITECTURE.md) | Frontend OS architecture (System42 Kernel, System52 Services) | Frontend |
 | [BACKEND_OPERATIONS.md](./architecture/BACKEND_OPERATIONS.md) | Backend operations manual (API, DB, Cache, Observability) | Backend |
 | [MONOREPO_GOVERNANCE.md](./architecture/MONOREPO_GOVERNANCE.md) | Monorepo governance, ownership, and dependency management | Platform |
 
@@ -56,13 +55,12 @@ Directory: `./architecture/`
 
 ## Doctrine
 
-<!-- @NOTE(doctrine): Enterprise strategy and operational standards -->
+<!-- @NOTE(doctrine): Standards and knowledge management -->
 
 Directory: `./doctrine/`
 
 | Spec | Description | Scope |
 |------|-------------|-------|
-| [ENTERPRISE_STRATEGY.md](./doctrine/ENTERPRISE_STRATEGY.md) | NexusOS strategic vision, culture, and roadmap | Strategic |
 | [KNOWLEDGE_MANAGEMENT.md](./doctrine/KNOWLEDGE_MANAGEMENT.md) | Knowledge management system (KMS) and research methodology | Research |
 | [DOCUMENTATION_STANDARDS.md](./doctrine/DOCUMENTATION_STANDARDS.md) | Documentation compliance framework and audit matrix | Standards |
 
@@ -104,8 +102,8 @@ Directory: `./diagrams/`
 | Category | Content Type | Examples |
 |----------|-------------|----------|
 | **Root (/)** | OpenCode core specs | Orchestration, agents, skills, workflows |
-| **architecture/** | Platform/domain architecture | Frontend, backend, monorepo |
-| **doctrine/** | Strategic and operational standards | KMS, documentation, enterprise strategy |
+| **architecture/** | Platform/domain architecture | Backend, monorepo |
+| **doctrine/** | Standards and knowledge management | KMS, documentation |
 | **governance/** | Process and lifecycle management | RFC process, spec governance |
 | **diagrams/** | Visual architecture (.mmd) | System flows, hierarchies |
 
@@ -125,7 +123,6 @@ Directory: `./diagrams/`
 <!-- @REF(.opencode/BOOTSTRAP.md): Session initialization -->
 <!-- @REF(.opencode/agent/): Agent definitions -->
 <!-- @REF(.opencode/skill/): Skill library -->
-<!-- @REF(AGENTS.md): Monorepo constitution -->
 
 | Resource | Path | Purpose |
 |----------|------|---------|
@@ -152,7 +149,8 @@ Directory: `./diagrams/`
 
 | Version | Date | Changes |
 |---------|------|---------|
-| 1.0.0 | 2026-01-07 | Initial reorganization from .opencode/docs/ |
+| 2.0.0 | 2026-01-07 | Generalized for template use |
+| 1.0.0 | 2026-01-07 | Initial reorganization |
 
 ---
 

@@ -1,12 +1,13 @@
-# OpenCode Bootstrap - NexusOS
+# OpenCode Bootstrap
 
 <!-- @META: Session Initialization Protocol -->
 <!--
     File: .opencode/BOOTSTRAP.md
-    Version: 3.0.0
+    Version: 4.0.0
     Created: 2026-01-06
     Updated: 2026-01-07
     Scope: Universal session entry point for all agents
+    Template: Agnostic - Ready for any project
 -->
 
 <!-- @NOTE(boot-001): Critical Entry Point -->
@@ -15,28 +16,28 @@
 
 ---
 
-## ⚡ Quick Context
+## Quick Context
 
 <!-- @NOTE(ctx-001): Project Identity -->
+<!-- @CONFIGURE: Update this table for your project -->
 | Attribute | Value |
 |-----------|-------|
-| **Project** | NexusOS (codename: VibeOS) |
-| **Mission** | Build the world's first AI-native Operating System |
-| **Valuation** | $600B AI-first startup |
-| **Owner** | Guilherme (Sole Founder & Product Owner) |
-| **Repository** | `/home/guilherme/Workdir/nexus-os-dash` |
+| **Project** | Your Project Name |
+| **Mission** | Your project's mission statement |
+| **Owner** | Project Owner |
+| **Repository** | This repository root |
 
 <!-- @NOTE(ctx-002): Product Definition -->
-**NexusOS** is a **web-based Operating System** designed for the AI age. It provides:
-- Multi-window desktop environment running in the browser
-- Virtual filesystem with offline support
-- AI-first application suite (office, browser, IDE, etc.)
-- Real-time multi-user collaboration via WebRTC/WebSocket
-- Extensible app ecosystem with sandboxed execution
+<!-- @CONFIGURE: Replace with your project description -->
+**This project** should have a clear description here. Update this section to describe:
+- What your project does
+- Core features and capabilities
+- Target users or use cases
+- Key differentiators
 
 ---
 
-## 🔄 Session Protocol
+## Session Protocol
 
 <!-- @RULE: Session Start Protocol -->
 > **Execute this checklist at the start of EVERY session**:
@@ -44,7 +45,7 @@
 > 2. Check `.opencode/memory/project.yaml` for structure
 > 3. Check `.opencode/tasks/sprint.yaml` for current work
 > 4. Review any active task in `.opencode/tasks/queue/`
-> 5. Resume work or ask Founder for direction
+> 5. Resume work or ask the project owner for direction
 
 <!-- @NOTE(flow-001): Context Loading Order -->
 ```mermaid
@@ -57,7 +58,7 @@ flowchart LR
 
 ---
 
-## 🗺️ Directory Map
+## Directory Map
 
 <!-- @REF(.opencode/): Agent Infrastructure Root -->
 ```
@@ -65,7 +66,7 @@ flowchart LR
 ├── BOOTSTRAP.md               # THIS FILE - Start here every session
 │
 ├── agent/                     # Agent Definitions (7 agents)
-│   ├── orchestrator.md        # 🎯 MAIN THREAD - Human interface (Genesis)
+│   ├── orchestrator.md        # MAIN THREAD - Human interface (Genesis)
 │   ├── leonidas.md            # Sub-orchestrator (autonomous execution)
 │   ├── architect.md           # System design (specs only, no code)
 │   ├── planning.md            # Strategic planning, RFCs, decomposition
@@ -119,29 +120,32 @@ flowchart LR
 
 ---
 
-## 🛑 Critical Rules
+## Critical Rules
 
 <!-- @WARN: Non-Negotiable Rules -->
 > **These are NON-NEGOTIABLE. Violating these will break the system.**
 
 ### 1. Package Manager
-<!-- @RULE: Pnpm Only -->
-> ALWAYS use `pnpm`. NEVER use `npm` or `yarn` or `bun` for package management.
+<!-- @RULE: Package Manager -->
+<!-- @CONFIGURE: Set your preferred package manager -->
+> Use the project's preferred package manager consistently.
+> Check `package.json` or project docs for the required tool (npm, yarn, pnpm, bun).
 
 ### 2. Test Co-location
 <!-- @RULE: Colocated Tests -->
-> Tests MUST be in the same directory as source (e.g., `src/foo.ts` and `src/foo.test.ts`).
-> NEVER use centralized `tests/` folders.
+<!-- @CONFIGURE: Adjust if your project uses a different test structure -->
+> Tests SHOULD be in the same directory as source (e.g., `src/foo.ts` and `src/foo.test.ts`).
+> Check `AGENTS.md` or project conventions for specific test placement rules.
 
 ### 3. Documentation Hierarchy
 <!-- @RULE: Doc Chain -->
 > `AGENTS.md` files form a chain:
-> Root `AGENTS.md` → Package `AGENTS.md` → Module `AGENTS.md`.
+> Root `AGENTS.md` -> Package `AGENTS.md` -> Module `AGENTS.md`.
 > Child documents override parent for their specific scope.
 
 ### 4. Agent Delegation
 <!-- @RULE: Orchestrator Delegation -->
-> Leonidas orchestrates → Specialized agents execute.
+> Leonidas orchestrates -> Specialized agents execute.
 > NEVER implement code directly if you are the orchestrator.
 > ALWAYS delegate to the appropriate specialist.
 
@@ -151,21 +155,21 @@ flowchart LR
 > ALWAYS verify with `git status` before committing.
 > WARN before any destructive git operation.
 
-### 6. Source Citation (SOP-001) ⚠️ CRITICAL
+### 6. Source Citation (SOP-001) - CRITICAL
 <!-- @RULE: Mandatory Source Citation -->
 > **EVERY piece of information MUST cite its source.** This is NON-NEGOTIABLE.
 > Without source citations, agents cannot navigate the knowledge graph.
 > 
 > **See full protocol**: `AGENTS.md#sop-001` or section below.
 
-### 7. Inline Audit Protocol (SOP-002) ⚠️ CRITICAL
+### 7. Inline Audit Protocol (SOP-002) - CRITICAL
 <!-- @RULE: Standardized Inline Annotations -->
 > **Use standardized tags for findings.** This enables terminal-based discovery.
 > Mandatory during code reviews and audits.
 > 
 > **See full protocol**: `AGENTS.md#sop-002` or section below.
 
-### 8. Parallel Decomposition Protocol (SOP-003) ⚠️ CRITICAL
+### 8. Parallel Decomposition Protocol (SOP-003) - CRITICAL
 <!-- @RULE: Intelligent Parallel Task Decomposition -->
 > **ALL complex user requests MUST be decomposed into parallel Leonidas sub-agents.**
 > This is the DEFAULT behavior of the main orchestrator thread.
@@ -174,47 +178,47 @@ flowchart LR
 
 ---
 
-## 🚀 Parallel Decomposition Protocol (SOP-003)
+## Parallel Decomposition Protocol (SOP-003)
 
 <!-- @NOTE(sop-003): Native Parallel Execution Pattern -->
 <!-- @WHY: Maximizes throughput by leveraging parallel sub-orchestrators for complex tasks -->
 
-> **⚠️ CRITICAL: This is the DEFAULT behavior when receiving user messages.**
+> **CRITICAL: This is the DEFAULT behavior when receiving user messages.**
 > **The main thread orchestrates; Leonidas sub-agents execute in parallel.**
 
 ### Core Principle
 
 ```
-┌─────────────────────────────────────────────────────────────────────┐
-│                    MAIN THREAD (OpenCode)                            │
-│  Role: Orchestrator - Receives user message, decomposes, delegates   │
-│  NEVER executes complex tasks directly - ALWAYS delegates            │
-└───────────────────────────────────┬─────────────────────────────────┘
-                                    │
++---------------------------------------------------------------------+
+|                    MAIN THREAD (OpenCode)                            |
+|  Role: Orchestrator - Receives user message, decomposes, delegates   |
+|  NEVER executes complex tasks directly - ALWAYS delegates            |
++-----------------------------------+---------------------------------+
+                                    |
                     PARALLEL DECOMPOSITION
                       (multiple Task calls)
-                                    │
-        ┌───────────────────────────┼───────────────────────────┐
-        ▼                           ▼                           ▼
-┌───────────────┐         ┌───────────────┐         ┌───────────────┐
-│   LEONIDAS    │         │   LEONIDAS    │         │   LEONIDAS    │
-│   Sub-Agent   │         │   Sub-Agent   │         │   Sub-Agent   │
-│               │         │               │         │               │
-│ - Own TodoList│         │ - Own TodoList│         │ - Own TodoList│
-│ - Full auton. │         │ - Full auton. │         │ - Full auton. │
-│ - Delegates   │         │ - Delegates   │         │ - Delegates   │
-│   to specs    │         │   to specs    │         │   to specs    │
-└───────────────┘         └───────────────┘         └───────────────┘
-        │                         │                         │
+                                    |
+        +---------------------------+---------------------------+
+        v                           v                           v
++---------------+         +---------------+         +---------------+
+|   LEONIDAS    |         |   LEONIDAS    |         |   LEONIDAS    |
+|   Sub-Agent   |         |   Sub-Agent   |         |   Sub-Agent   |
+|               |         |               |         |               |
+| - Own TodoList|         | - Own TodoList|         | - Own TodoList|
+| - Full auton. |         | - Full auton. |         | - Full auton. |
+| - Delegates   |         | - Delegates   |         | - Delegates   |
+|   to specs    |         |   to specs    |         |   to specs    |
++---------------+         +---------------+         +---------------+
+        |                         |                         |
     [Result]                  [Result]                  [Result]
-        │                         │                         │
-        └─────────────────────────┼─────────────────────────┘
-                                  ▼
-                    ┌─────────────────────────┐
-                    │      MAIN THREAD        │
-                    │  Consolidates results   │
-                    │  Reports to user        │
-                    └─────────────────────────┘
+        |                         |                         |
+        +-------------------------+-------------------------+
+                                  v
+                    +-------------------------+
+                    |      MAIN THREAD        |
+                    |  Consolidates results   |
+                    |  Reports to user        |
+                    +-------------------------+
 ```
 
 ### When to Decompose (ALWAYS for complex tasks)
@@ -291,19 +295,19 @@ DO NOT:
 
 ### Practical Examples
 
-#### Example 1: Monorepo Audit
-**User**: "Faça uma auditoria completa do repositório"
+#### Example 1: Repository Audit
+**User**: "Do a complete repository audit"
 
 **Main Thread Response**:
 ```
-# Decompose into 5+ parallel Leonidas agents:
-Task(leonidas) → Map root structure
-Task(leonidas) → Map TODO files
-Task(leonidas) → Map RFCs and specs
-Task(leonidas) → Map documentation
-Task(leonidas) → Map vibeos-react package
-Task(leonidas) → Map backend package
-Task(leonidas) → Map wiki
+# Decompose into parallel Leonidas agents:
+Task(leonidas) -> Map root structure
+Task(leonidas) -> Map TODO files
+Task(leonidas) -> Map RFCs and specs
+Task(leonidas) -> Map documentation
+Task(leonidas) -> Map frontend package (e.g., apps/, client/)
+Task(leonidas) -> Map backend package (e.g., api/, server/)
+Task(leonidas) -> Map shared packages
 
 # All launched in SINGLE message with multiple Task calls
 # Wait for all to complete
@@ -316,25 +320,25 @@ Task(leonidas) → Map wiki
 **Main Thread Response**:
 ```
 # Decompose into parallel work:
-Task(leonidas) → Research existing patterns (research-focused)
-Task(leonidas) → Design database schema (architect-focused)
-Task(leonidas) → Implement backend service (code-focused)
-Task(leonidas) → Implement frontend toggle (code-focused)
-Task(leonidas) → Write tests (code-focused)
+Task(leonidas) -> Research existing patterns (research-focused)
+Task(leonidas) -> Design database schema (architect-focused)
+Task(leonidas) -> Implement backend service (code-focused)
+Task(leonidas) -> Implement frontend toggle (code-focused)
+Task(leonidas) -> Write tests (code-focused)
 
 # Consolidate and verify integration
 ```
 
 #### Example 3: Bug Investigation
-**User**: "Fix the WebRTC connection issues"
+**User**: "Fix the WebSocket connection issues"
 
 **Main Thread Response**:
 ```
 # Decompose investigation:
-Task(leonidas) → Analyze client-side code
-Task(leonidas) → Analyze server-side signaling
-Task(leonidas) → Review network layer
-Task(leonidas) → Check ICE candidate handling
+Task(leonidas) -> Analyze client-side code
+Task(leonidas) -> Analyze server-side handling
+Task(leonidas) -> Review network layer
+Task(leonidas) -> Check reconnection logic
 
 # Consolidate findings, then delegate fix to code agent
 ```
@@ -361,15 +365,15 @@ Task(leonidas) → Check ICE candidate handling
 
 | Anti-Pattern | Correct Approach |
 |--------------|------------------|
-| ❌ Execute complex task directly in main thread | ✅ Decompose and delegate to Leonidas |
-| ❌ Launch sub-agents sequentially (one at a time) | ✅ Launch all independent sub-agents in parallel |
-| ❌ Ask user for clarification before decomposing | ✅ Make reasonable assumptions, decompose, execute |
-| ❌ Have sub-agents ask questions | ✅ Provide complete context in prompt |
-| ❌ Wait for approval between sub-tasks | ✅ Execute autonomously, report only final result |
+| Execute complex task directly in main thread | Decompose and delegate to Leonidas |
+| Launch sub-agents sequentially (one at a time) | Launch all independent sub-agents in parallel |
+| Ask user for clarification before decomposing | Make reasonable assumptions, decompose, execute |
+| Have sub-agents ask questions | Provide complete context in prompt |
+| Wait for approval between sub-tasks | Execute autonomously, report only final result |
 
 ---
 
-## 📍 Source Citation Protocol (SOP-001)
+## Source Citation Protocol (SOP-001)
 
 <!-- @NOTE(sop-001): Mandatory Traceability Standard -->
 <!-- @REF(AGENTS.md#sop-001): Master definition of this SOP -->
@@ -384,7 +388,7 @@ Every fact, task, decision, or reference MUST link back to its origin.
 | Context | Format | Example |
 |---------|--------|---------|
 | **Markdown** | `<!-- @REF(file:line) -->` | `<!-- @REF(backend/TODO.md:23): Billing fix -->` |
-| **YAML tasks** | `source:` field | `source: "wiki/TODO_MASTER.md"` |
+| **YAML tasks** | `source:` field | `source: "docs/TODO.md"` |
 | **YAML tasks** | `related_files:` | `related_files: ["src/billing.ts"]` |
 | **Code** | `// @REF(file)` | `// @REF(AGENTS.md#sop-001)` |
 | **Inline nav** | `path:line` | `src/service.ts:45` |
@@ -393,9 +397,9 @@ Every fact, task, decision, or reference MUST link back to its origin.
 ```yaml
 - id: "TASK-XXX"
   title: "Task Title"
-  source: "path/to/origin.md"        # ⚠️ REQUIRED
+  source: "path/to/origin.md"        # REQUIRED
   source_line: 45                     # Optional but recommended
-  related_files:                      # ⚠️ REQUIRED  
+  related_files:                      # REQUIRED  
     - "src/module/file.ts"
   description: |
     <!-- @REF(source:line): Context -->
@@ -410,7 +414,7 @@ Every fact, task, decision, or reference MUST link back to its origin.
 
 ---
 
-## 🔍 Inline Audit Protocol (SOP-002)
+## Inline Audit Protocol (SOP-002)
 
 <!-- @NOTE(sop-002): Standardized Findings Tagging -->
 <!-- @REF(AGENTS.md#sop-002): Master definition of this SOP -->
@@ -429,7 +433,7 @@ Every fact, task, decision, or reference MUST link back to its origin.
 
 ---
 
-## 🤖 Agent Hierarchy
+## Agent Hierarchy
 
 <!-- @REF(.opencode/docs/architecture.md): Full Architecture -->
 <!-- @REF(.opencode/agent/orchestrator.md): Main Thread Definition -->
@@ -439,7 +443,7 @@ Every fact, task, decision, or reference MUST link back to its origin.
 ```mermaid
 flowchart TD
     subgraph Human["Human Layer"]
-        F[Founder<br/>Guilherme]
+        F[Project Owner]
     end
     
     subgraph Main["Main Thread (orchestrator.md)"]
@@ -492,46 +496,50 @@ flowchart TD
 
 ---
 
-## 🏗️ Project Structure
+## Project Structure
 
-### Monorepo Layout
+### Example Repository Layout
 
-<!-- @REF(pnpm-workspace.yaml): Workspace Definition -->
+<!-- @CONFIGURE: Update this to match your project structure -->
+<!-- @NOTE: This is an example layout - adapt to your needs -->
 ```
-nexus-os-dash/
-├── vibeos-react/          # Frontend OS (React/Vite)
-│   ├── system42/          # Kernel: FS, Process, Window, Security
-│   ├── system52/          # Services: Settings, Hub, Features
-│   └── apps/              # Built-in applications
+your-project/
+├── apps/                      # Application packages
+│   ├── web/                   # Web frontend (e.g., React, Vue, Next.js)
+│   ├── api/                   # Backend API (e.g., Node, Python, Go)
+│   └── mobile/                # Mobile app (optional)
 │
-├── backend/               # Backend Infrastructure
-│   └── hub/               # Signaling server (WebSocket)
+├── packages/                  # Shared packages/libraries
+│   ├── ui/                    # Shared UI components
+│   ├── utils/                 # Shared utilities
+│   └── config/                # Shared configuration
 │
-├── packages/              # Shared packages
+├── infrastructure/            # Deployment and infrastructure
+│   ├── docker/                # Docker configurations
+│   └── k8s/                   # Kubernetes manifests (optional)
 │
-├── infrastructure/        # Docker, deployment configs
+├── docs/                      # Project documentation
 │
-├── neural/                # AI/ML experiments
+├── .opencode/                 # THIS - Agent system
 │
-├── wiki/                  # Knowledge base
-│
-├── .opencode/             # THIS - Agent system
-└── .skills/               # LEGACY - Migrating to .opencode/skill/
+└── AGENTS.md                  # Root agent documentation
 ```
 
 ### Key Technologies
 
-<!-- @NOTE(stack-001): Tech Stack -->
+<!-- @CONFIGURE: Update this to match your tech stack -->
+<!-- @NOTE: Example tech stack - replace with your actual stack -->
 | Layer | Stack |
 |-------|-------|
-| **Frontend** | React 18, Vite, TypeScript, Tailwind, Framer Motion |
-| **Backend** | Node.js 20+, Hono, PostgreSQL, Drizzle ORM |
-| **AI** | OpenCode, Claude (Anthropic), Gemini (Google) |
-| **Infra** | pnpm workspaces, Vitest, ESLint, Docker Swarm |
+| **Frontend** | (e.g., React, Vue, Next.js, TypeScript) |
+| **Backend** | (e.g., Node.js, Python, Go, Rust) |
+| **Database** | (e.g., PostgreSQL, MongoDB, Redis) |
+| **AI/LLM** | OpenCode, Claude (Anthropic), Gemini (Google) |
+| **Infra** | (e.g., Docker, Kubernetes, Vercel, AWS) |
 
 ---
 
-## 🎯 Current Focus
+## Current Focus
 
 <!-- @DYNAMIC: Update this section based on active sprint -->
 <!-- @REF(.opencode/tasks/sprint.yaml): Active Tasks -->
@@ -559,14 +567,14 @@ cat .opencode/memory/project.yaml
 
 ---
 
-## 🆘 Emergency Recovery
+## Emergency Recovery
 
 ### Lost Context?
 <!-- @NOTE(rec-001): Context Recovery -->
 1. Re-read this `BOOTSTRAP.md`
 2. Load `memory/project.yaml` for project structure
 3. Check git log for recent changes: `git log --oneline -20`
-4. Ask Founder: "What should I work on?"
+4. Ask the project owner: "What should I work on?"
 
 ### Session Crashed?
 <!-- @NOTE(rec-002): Session Recovery -->
@@ -578,7 +586,7 @@ cat .opencode/memory/project.yaml
 ### Conflicting Information?
 <!-- @RULE: Truth Precedence -->
 **Precedence (highest to lowest):**
-1. Direct Founder instruction (in conversation)
+1. Direct project owner instruction (in conversation)
 2. This `BOOTSTRAP.md`
 3. `AGENTS.md` files
 4. Spec documents in `docs/`
@@ -586,7 +594,7 @@ cat .opencode/memory/project.yaml
 
 ---
 
-## 📚 Skills Reference
+## Skills Reference
 
 <!-- @NOTE(skill-001): Skill Usage -->
 Load a skill for specialized guidance:
@@ -601,7 +609,7 @@ Load a skill for specialized guidance:
 
 ---
 
-## 🔗 Quick Reference
+## Quick Reference
 
 ### Documentation Links
 - [Architecture](docs/architecture.md) - Full system design
@@ -613,6 +621,7 @@ Load a skill for specialized guidance:
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 4.0.0 | 2026-01-07 | Refactored to project-agnostic template |
 | 3.0.0 | 2026-01-07 | Added SOP-003: Parallel Decomposition Protocol |
 | 2.0.0 | 2026-01-07 | Full semantic audit and standardization |
 | 1.0.0 | 2026-01-06 | Initial bootstrap document |
@@ -620,4 +629,4 @@ Load a skill for specialized guidance:
 ---
 
 <!-- @NOTE(final-001): Final Authority -->
-> **Remember**: When in doubt, ask Guilherme. He has final authority on all decisions.
+> **Remember**: When in doubt, ask the project owner. They have final authority on all decisions.

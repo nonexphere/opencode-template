@@ -11,21 +11,20 @@
 ## 1. Service Architecture
 
 <!-- @NOTE(arch-001): Microservices Topology -->
-The Nexus OS backend follows a **Modular Monolith** architecture evolving into **Microservices**.
-Core services are grouped by domain but deployable independently.
+This document provides a reference template for backend service architecture. Adapt the patterns to your specific project needs.
 
 ### Topology
 - **Edge Layer**: Cloudflare / Nginx Ingress
-- **API Gateway**: `hub` (Signaling Server) acting as the primary entry point
-- **Service Layer**: Node.js services (AI, Billing, Storage)
+- **API Gateway**: Primary entry point for all services
+- **Service Layer**: Node.js/Python/Go services
 - **Data Layer**: PostgreSQL (Primary), Redis (Cache), S3 (Blob)
 
 ### Communication Patterns
 1.  **Synchronous (RPC)**:
     - Internal REST over HTTP/2
-    - gRPC for high-throughput inter-service calls (future)
+    - gRPC for high-throughput inter-service calls
 2.  **Asynchronous (Event-Driven)**:
-    - **SystemBus** (In-memory for local modules)
+    - **Message Bus** (In-memory for local modules)
     - **Kafka/Redpanda** (Inter-service events)
     - **WebSockets** (Real-time client push)
 
@@ -34,7 +33,7 @@ Core services are grouped by domain but deployable independently.
 ## 2. API Design Standards
 
 <!-- @RULE: API Consistency -->
-All services must adhere to the **Nexus API Standard** (RFC-API-001).
+All services should adhere to consistent API standards.
 
 ### REST Guidelines
 - **Resources**: Plural nouns (e.g., `/users`, `/invoices`)
@@ -48,7 +47,7 @@ All services must adhere to the **Nexus API Standard** (RFC-API-001).
 - **Filtering**: `?field[eq]=value` or SCIM-like syntax.
 
 ### GraphQL
-- Used primarily by the Frontend BFF (Backend for Frontend) layer.
+- Used primarily by Frontend BFF (Backend for Frontend) layer.
 - **Federation**: Apollo Federation for composing subgraphs.
 
 ---
@@ -60,7 +59,7 @@ All services must adhere to the **Nexus API Standard** (RFC-API-001).
 ### Primary Store: PostgreSQL
 - **Usage**: Relational data (Users, Orgs, Billing)
 - **Schema Management**: Drizzle ORM + Migrations
-- **High Availability**: Primary-Replica setup with auto-failover (Patroni/AWS RDS)
+- **High Availability**: Primary-Replica setup with auto-failover
 
 ### Migration Policy
 1.  **Forward-only**: Migrations must never destroy data.
@@ -83,7 +82,7 @@ All services must adhere to the **Nexus API Standard** (RFC-API-001).
 <!-- @NOTE(cache-001): Performance Tier -->
 
 ### Redis Cluster
-- **L1 Cache**: In-memory (LRU) within Node.js processes (short-lived, <5s)
+- **L1 Cache**: In-memory (LRU) within processes (short-lived, <5s)
 - **L2 Cache**: Redis Cluster (Shared state)
     - **Session Store**: User sessions (TTL: 7 days)
     - **Rate Limits**: Sliding window counters
@@ -231,90 +230,9 @@ All services must adhere to the **Nexus API Standard** (RFC-API-001).
 
 ---
 
-## 13. Service Registry
+## 13. Version History
 
-Detailed operational map of all backend components.
-
-### Hub Modules (Monolith)
-
-| Module | Responsibility | Dependencies | Criticality | SLA (Avail) | Owner | Runbook |
-|--------|----------------|--------------|-------------|-------------|-------|---------|
-| **Access** | RBAC/ABAC logic | DB, Cache | **P0** | 99.99% | Core Auth | [RUN-001](#) |
-| **Auth** | Login, JWT, MFA | DB, Redis, Email | **P0** | 99.99% | Core Auth | [RUN-002](#) |
-| **Billing** | Credits, Invoices | Stripe, DB | **P0** | 99.99% | FinTech | [RUN-003](#) |
-| **Orgs** | Multi-tenancy | DB | **P1** | 99.9% | Core Platform | [RUN-004](#) |
-| **Signaling** | WebRTC WebSocket | Redis (PubSub) | **P1** | 99.9% | Realtime | [RUN-005](#) |
-| **Users** | Profiles, Settings | DB | **P1** | 99.9% | Core Platform | [RUN-006](#) |
-| **Audit** | Compliance Logs | DB (Timescale) | **P2** | 99.5% | Security | [RUN-007](#) |
-| **RateLimit** | Traffic Control | Redis | **P0** | 99.99% | SRE | [RUN-008](#) |
-
-### Standalone Applications
-
-| App | Responsibility | Dependencies | Criticality | SLA | Owner | Runbook |
-|-----|----------------|--------------|-------------|-----|-------|---------|
-| **AI Inference** | LLM Gateway | OpenAI/Anthropic | **P1** | 99.5% | AI Team | [RUN-AI-01](#) |
-| **Cloud Storage** | S3 Wrapper/Mgmt | AWS S3 / R2 | **P1** | 99.9% | Infra | [RUN-STO-01](#) |
-| **Knowledge Base** | Vector Search / RAG | Vector DB, AI App | **P2** | 99.0% | AI Team | [RUN-KB-01](#) |
-| **Billing Gateway** | Payment Webhooks | Stripe/MercadoPago | **P0** | 99.99% | FinTech | [RUN-pay-01](#) |
-
-### Shared Packages
-
-| Package | Purpose | Criticality | Maintainer |
-|---------|---------|-------------|------------|
-| `circuit-breaker` | Fault tolerance | High | Platform |
-| `config` | Env var validation | Critical | Platform |
-| `db` | Drizzle ORM schemas | Critical | Data Eng |
-| `events` | Kafka/Bus types | High | Platform |
-| `logger` | JSON logging | Medium | SRE |
-| `worker` | Background jobs | High | Platform |
-
----
-
-<!-- @TODO: Link actual runbook URLs when created -->
-<!-- @TODO: Add monitoring dashboard links -->
-
----
-
-## 14. Operational Roles & Responsibilities
-
-### Incident Command System (ICS)
-During a SEV-1 or SEV-2 incident, the following roles are assigned:
-
-1.  **Incident Commander (IC)**:
-    - **Responsibility**: Runs the incident. Makes all final decisions. Does NOT debug.
-    - **Authority**: Can pull anyone from any team.
-    - **Handoff**: Must formally hand off role if leaving.
-
-2.  **Operations Lead (Ops)**:
-    - **Responsibility**: Performs system changes (rollbacks, restarts, scaling).
-    - **Focus**: Mitigation and stability.
-
-3.  **Communications Lead (Comms)**:
-    - **Responsibility**: Updates status page, informs internal stakeholders.
-    - **Frequency**: Internal every 30m, External every 1h.
-
-4.  **Scribe**:
-    - **Responsibility**: Documents timeline, commands issued, and key observations in the Slack channel.
-
-### On-Call Rotation
-- **Schedule**: Weekly rotation. Handover on Mondays at 11:00 AM.
-- **Shadowing**: New engineers must shadow 2 rotations before going solo.
-- **Compensation**: Standard override pay applies for off-hours paging.
-
----
-
-## 15. Compliance & Auditing
-
-### Data Privacy (GDPR/CCPA)
-- **Right to be Forgotten**: Supported via `POST /api/user/deletion-request`. Processed within 30 days.
-- **Data Export**: Users can download their data archive via `GET /api/user/export`.
-- **PII Handling**: All PII (Email, IP) is encrypted at rest or anonymized in logs.
-
-### Security Compliance (SOC2 Type II)
-- **Change Management**: All PRs require 1 approval. No direct commits to `main`.
-- **Access Control**: Quarterly access review for AWS/Prod DB access.
-- **Vulnerability Management**:
-    - **SAST**: GitHub CodeQL runs on every PR.
-    - **DAST**: Weekly scans on staging environment.
-    - **Depedency Check**: Dependabot alerts for high-severity CVEs.
-
+| Version | Date | Changes |
+|---------|------|---------|
+| 2.0.0 | 2026-01-07 | Generalized for template use |
+| 1.0.0 | 2026-01-07 | Initial document |

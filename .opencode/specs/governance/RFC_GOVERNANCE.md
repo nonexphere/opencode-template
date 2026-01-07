@@ -1,4 +1,4 @@
-# NexusOS RFC & Spec Governance System
+# RFC & Spec Governance System
 
 <!-- @META: System-wide Governance for RFCs, ADRs, and Specifications -->
 <!--
@@ -14,7 +14,7 @@
 ## 📜 Manifesto
 
 <!-- @NOTE(gov-001): Governance Philosophy -->
-> **Codified Decisions**: In NexusOS, if it isn't documented in an RFC or Spec, it doesn't exist.
+> **Codified Decisions**: If it isn't documented in an RFC or Spec, it doesn't exist.
 > We prioritize **asynchronous communication**, **structured decision-making**, and **traceability**.
 
 This document defines the **Request for Comments (RFC)** process and serves as the **Master Registry** for all architectural specifications.
@@ -143,16 +143,11 @@ A specification is **Review Ready** when:
 
 | ID | Title | State | Author | Progress | Impact | Breaking? |
 |----|-------|-------|--------|----------|--------|-----------|
-| **RFC-001** | [Monorepo Architecture Alignment](docs/RFC/RFC-001-MONOREPO-ARCHITECTURE-ALIGNMENT.md) | `[Approved]` | Architect | 15% | Critical | **Yes** |
-| **RFC-002** | [Security Sandbox & Vulns](docs/RFC/RFC-002-SECURITY-VULNERABILITIES-SANDBOX.md) | `[Approved]` | Security | 10% | Critical | No |
-| **RFC-003** | [Frontend-Backend Integration](docs/RFC/RFC-003-FRONTEND-BACKEND-INTEGRATION.md) | `[Review]` | Fullstack | 0% | High | No |
-| **RFC-004** | [Tech Debt & Code Quality](docs/RFC/RFC-004-TECHNICAL-DEBT-CODE-QUALITY.md) | `[Draft]` | Lead | 0% | High | No |
-| **RFC-005** | [Infra Production Readiness](docs/RFC/RFC-005-INFRASTRUCTURE-PRODUCTION-READINESS.md) | `[Approved]` | DevOps | 5% | Critical | No |
-| **RFC-006** | [Product Strategy Alignment](docs/RFC/RFC-006-STRATEGIC-PRODUCT-ALIGNMENT.md) | `[Draft]` | Product | 0% | Medium | No |
-| **RFC-007** | [PWA & Mobile Readiness](docs/RFC/RFC-007-PWA-MOBILE-PLATFORM-READINESS.md) | `[Review]` | Mobile | 0% | High | No |
-| **RFC-008** | [AI/ML Service Architecture](docs/RFC/RFC-008-AI-ML-SERVICE-ARCHITECTURE.md) | `[Draft]` | AI Team | 0% | High | No |
-| **RFC-009** | [Skill System Workflow](docs/RFC/RFC-009-SKILL-SYSTEM-WORKFLOW.md) | `[Draft]` | AI Team | 0% | Medium | No |
-| **RFC-010** | [NexusOS Native AI Protocol](wiki/index-agents/RFC-010-NEXUSOS-AI-PROTOCOL.md) | `[Draft]` | Architect | 0% | Critical | **Yes** |
+| **RFC-001** | [Monorepo Architecture Alignment](docs/RFC/RFC-001.md) | `[Draft]` | Architect | 0% | Critical | **Yes** |
+| **RFC-002** | [Security & Vulnerabilities](docs/RFC/RFC-002.md) | `[Draft]` | Security | 0% | Critical | No |
+| **RFC-003** | [Frontend-Backend Integration](docs/RFC/RFC-003.md) | `[Draft]` | Fullstack | 0% | High | No |
+
+*Note: Add project-specific RFCs as they are created.*
 
 ### 2. Architecture Specifications
 
@@ -164,7 +159,6 @@ A specification is **Review Ready** when:
 | **System Arch** | `.opencode/docs/architecture.md` | `[Live]` | OpenCode | Agent | 2026-01 |
 | **Orchestration** | `.opencode/specs/ORCHESTRATION_ARCHITECTURE.md` | `[Live]` | OpenCode | Logic | 2026-01 |
 | **Agents & Skills** | `.opencode/specs/AGENTS_SKILLS_ARCHITECTURE.md` | `[Live]` | OpenCode | Logic | 2026-01 |
-| **VibeOS Arch** | `vibeos-react/docs/ARCHITECTURE.md` | `[Live]` | Frontend | System | 2026-01 |
 
 ### 3. Design Specifications
 
@@ -172,14 +166,10 @@ A specification is **Review Ready** when:
 
 | Spec | Path | State | Scope | Effort |
 |------|------|-------|-------|--------|
-| **Knowledge Graph** | `wiki/index-agents/llama-index/specs/KNOWLEDGE_GRAPH.md` | `[Draft]` | LlamaIndex | High |
-| **Reactive Ingestion** | `wiki/index-agents/llama-index/specs/REACTIVE_INGESTION.md` | `[Draft]` | LlamaIndex | Medium |
-| **Vector Store** | `wiki/index-agents/surrealdb-ai/specs/VECTOR_STORE.md` | `[Draft]` | SurrealDB | Medium |
-| **MCP Protocol** | `wiki/index-agents/mcp-python-sdk/SPECIFICATIONS.md` | `[Approved]` | MCP | High |
-| **MCP Capabilities** | `wiki/index-agents/mcp-python-sdk/specs/CAPABILITIES.md` | `[Draft]` | MCP | Low |
-| **Zero-Copy Transport** | `wiki/index-agents/mcp-python-sdk/specs/ZERO_COPY_TRANSPORT.md` | `[Draft]` | MCP | High |
 | **OpenCode Format** | `.opencode/specs/OPENCODE_FORMAT_REFERENCE.md` | `[Live]` | Core | N/A |
 | **Model Selection** | `.opencode/specs/AVAILABLE_MODELS.md` | `[Live]` | Core | N/A |
+
+*Note: Add project-specific design specs as they are created.*
 
 ---
 
@@ -189,10 +179,11 @@ A specification is **Review Ready** when:
 
 | Milestone | Linked RFCs | Target | Status |
 |-----------|-------------|--------|--------|
-| **Foundation** | RFC-001, RFC-005 | Q1 2026 | 🟡 At Risk |
-| **Security** | RFC-002 | Q1 2026 | 🟢 On Track |
-| **AI Core** | RFC-008, RFC-009, RFC-010 | Q2 2026 | ⚪ Pending |
-| **Experience** | RFC-003, RFC-007 | Q2 2026 | ⚪ Pending |
+| **Foundation** | RFC-001 | TBD | ⚪ Pending |
+| **Security** | RFC-002 | TBD | ⚪ Pending |
+| **Integration** | RFC-003 | TBD | ⚪ Pending |
+
+*Note: Update milestones as RFCs are approved and work begins.*
 
 ---
 

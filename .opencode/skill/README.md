@@ -47,10 +47,8 @@
 | [codebase-analysis](./codebase-analysis/SKILL.md) | Analyze unfamiliar codebase structure | Medium |
 | [rfc-creation](./rfc-creation/SKILL.md) | Create formal RFC documents | Medium |
 | [task-decomposition](./task-decomposition/SKILL.md) | Break down large initiatives | Medium |
-| [os-architect](./os-architect/SKILL.md) | Design OS subsystems and kernel | High |
+| [os-architect](./os-architect/SKILL.md) | Design system subsystems and architecture | High |
 | [data-architect](./data-architect/SKILL.md) | Design data schemas and storage | High |
-| [office-suite-architect](./office-suite-architect/SKILL.md) | Design Office-compatible suite | High |
-| [google-platform-architect](./google-platform-architect/SKILL.md) | Clone Android/Workspace features | High |
 
 ### Quality & Review
 
@@ -58,21 +56,20 @@
 |-------|-------------|------------|
 | [code-review](./code-review/SKILL.md) | Review code for quality and issues | Low |
 | [audit-code-review](./audit-code-review/SKILL.md) | Full-stack code audit | High |
-| [audit-ui-vibeos](./audit-ui-vibeos/SKILL.md) | VibeOS UI/UX audit | High |
 | [perf-optimizer](./perf-optimizer/SKILL.md) | Performance optimization | Medium |
 
 ### Backend Skills
 
 | Skill | Description | Complexity |
 |-------|-------------|------------|
-| [create-api](./create-api/SKILL.md) | Create RESTful APIs for Hub | Medium |
+| [create-api](./create-api/SKILL.md) | Create RESTful APIs | Medium |
 | [migrate-database](./migrate-database/SKILL.md) | Database schema migrations | High |
 
 ### Frontend Skills
 
 | Skill | Description | Complexity |
 |-------|-------------|------------|
-| [create-app-vibeos](./create-app-vibeos/SKILL.md) | Scaffold VibeOS applications | Medium |
+| *(Add your project-specific frontend skills here)* | | |
 
 ### System Knowledge
 
@@ -316,14 +313,10 @@ This system migrates and enhances skills from the legacy `.skills/` directory:
 | `.skills/templates/` | `templates/` | Migrated |
 | `.skills/analyze-agent-framework/` | `analyze-agent-framework/SKILL.md` | Migrated |
 | `.skills/audit-code-review/` | `audit-code-review/SKILL.md` | Migrated |
-| `.skills/audit-ui-vibeos/` | `audit-ui-vibeos/SKILL.md` | Migrated |
 | `.skills/create-api/` | `create-api/SKILL.md` | Migrated |
-| `.skills/create-app-vibeos/` | `create-app-vibeos/SKILL.md` | Migrated |
 | `.skills/data-architect/` | `data-architect/SKILL.md` | Migrated |
-| `.skills/google-platform-architect/` | `google-platform-architect/SKILL.md` | Migrated |
 | `.skills/manage-task-boundaries/` | `manage-task-boundaries/SKILL.md` | Migrated |
 | `.skills/migrate-database/` | `migrate-database/SKILL.md` | Migrated |
-| `.skills/office-suite-architect/` | `office-suite-architect/SKILL.md` | Migrated |
 | `.skills/os-architect/` | `os-architect/SKILL.md` | Migrated |
 | `.skills/perf-optimizer/` | `perf-optimizer/SKILL.md` | Migrated |
 

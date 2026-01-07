@@ -1,10 +1,10 @@
-%% System Overview - NexusOS OpenCode Architecture
-%% File: .opencode/docs/diagrams/system-overview.mmd
-%% Generated: 2026-01-06
+%% System Overview - OpenCode Architecture
+%% File: .opencode/specs/diagrams/system-overview.mmd
+%% Generated: 2026-01-07
 
 flowchart TB
     subgraph UserLayer["User Layer"]
-        U[User / Founder]
+        U[User / Owner]
         CLI[OpenCode CLI]
     end
 
@@ -43,22 +43,20 @@ flowchart TB
         FETCH[WebFetch Tool]
     end
 
-    subgraph ProjectLayer["NexusOS Project"]
+    subgraph ProjectLayer["Project"]
         direction TB
         
-        subgraph Frontend["vibeos-react"]
-            SYS42[system42 - Kernel]
-            SYS52[system52 - Services]
-            APPS[apps/]
+        subgraph Frontend["frontend/"]
+            FE_SRC[src/]
+            FE_COMP[components/]
         end
         
-        subgraph Backend["backend"]
-            HUB[hub/ - Signaling]
+        subgraph Backend["backend/"]
+            HUB[api/]
         end
         
         subgraph Docs["Documentation"]
             ARCH[ARCHITECTURE.md]
-            VISION[VISION.md]
             AGENTS[AGENTS.md files]
         end
     end
@@ -100,7 +98,6 @@ flowchart TB
     style MEM fill:#60A5FA,stroke:#333,color:#000
     style TASK fill:#FBBF24,stroke:#333,color:#000
     
-    style SYS42 fill:#818CF8,stroke:#333,color:#fff
-    style SYS52 fill:#A78BFA,stroke:#333,color:#fff
-    style APPS fill:#C4B5FD,stroke:#333,color:#000
+    style FE_SRC fill:#818CF8,stroke:#333,color:#fff
+    style FE_COMP fill:#A78BFA,stroke:#333,color:#fff
     style HUB fill:#34D399,stroke:#333,color:#000

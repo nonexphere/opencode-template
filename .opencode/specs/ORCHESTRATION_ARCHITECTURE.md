@@ -10,157 +10,148 @@
 -->
 
 <!-- @NOTE(orch-def): Definition -->
-> Documento de especificações para arquitetura de orquestração de agentes OpenCode
+> Specification document for OpenCode agent orchestration architecture.
 
-## 1. Contexto e Propósito
+## 1. Context and Purpose
 
 <!-- @NOTE(context): Context -->
-Este documento destila as diretrizes do Founder para funcionamento do sistema de agentes/skills do OpenCode, aplicado ao monorepo NexusOS.
+This document describes the orchestration architecture for the OpenCode agent system.
 
-**Objetivo Principal**: Destilar doutrinas, SOPs e guidelines dos repositórios `nexus-os-dash` e `roocode-configs` em skills e agents nativos do OpenCode.
+**Main Objective**: Define the hierarchical orchestration model for AI agents working on complex software projects.
 
 ---
 
-## 2. Arquitetura de Três Camadas
+## 2. Three-Tier Architecture
 
 <!-- @REF(.opencode/agent/orchestrator.md): Main Thread Definition -->
 <!-- @REF(.opencode/BOOTSTRAP.md#agent-hierarchy): Full Hierarchy Diagram -->
 
-### 2.1 Visão Geral da Hierarquia
+### 2.1 Hierarchy Overview
 
 ```
-┌─────────────────────────────────────────────────────────────────────┐
-│                         CAMADA 1: INTERFACE HUMANA                   │
-│                                                                       │
-│  Founder (Guilherme) ←→ Genesis Orchestrator (Main Thread)           │
-│  - Recebe direções do humano                                          │
-│  - Decompõe em workstreams paralelos                                  │
-│  - Consolida resultados                                               │
-│  - Reporta ao humano                                                  │
-└───────────────────────────────────┬─────────────────────────────────┘
-                                    │
-            DECOMPOSIÇÃO PARALELA (SOP-003)
-                                    │
-┌───────────────────────────────────┴─────────────────────────────────┐
-│                      CAMADA 2: SUB-ORQUESTRAÇÃO                       │
-│                                                                       │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐                    │
-│  │  LEONIDAS   │  │  LEONIDAS   │  │  LEONIDAS   │                    │
-│  │  Instance 1 │  │  Instance 2 │  │  Instance N │                    │
-│  │             │  │             │  │             │                    │
-│  │ - TodoList  │  │ - TodoList  │  │ - TodoList  │                    │
-│  │ - Autonomia │  │ - Autonomia │  │ - Autonomia │                    │
-│  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘                    │
-│         │                │                │                           │
-└─────────┼────────────────┼────────────────┼───────────────────────────┘
-          │                │                │
-┌─────────┴────────────────┴────────────────┴───────────────────────────┐
-│                       CAMADA 3: ESPECIALISTAS                          │
-│                                                                        │
-│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐     │
-│  │ Architect│ │ Planning │ │   Code   │ │ Research │ │  Debug   │     │
-│  │  Opus    │ │   Opus   │ │   Opus   │ │  Flash   │ │   Opus   │     │
-│  └──────────┘ └──────────┘ └──────────┘ └──────────┘ └──────────┘     │
-│                                                                        │
-│  Executam tarefas específicas, retornam resultados para Leonidas       │
-└────────────────────────────────────────────────────────────────────────┘
++---------------------------------------------------------------------+
+|                         TIER 1: HUMAN INTERFACE                      |
+|                                                                       |
+|  Human <-> Main Orchestrator (Main Thread)                           |
+|  - Receives directions from user                                      |
+|  - Decomposes into parallel workstreams                               |
+|  - Consolidates results                                               |
+|  - Reports to user                                                    |
++-----------------------------------+---------------------------------+
+                                    |
+             PARALLEL DECOMPOSITION (SOP-003)
+                                    |
++-----------------------------------+-----------------------------------+
+|                      TIER 2: SUB-ORCHESTRATION                        |
+|                                                                       |
+|  +--------------+  +--------------+  +--------------+                 |
+|  |   LEONIDAS   |  |   LEONIDAS   |  |   LEONIDAS   |                 |
+|  |  Instance 1  |  |  Instance 2  |  |  Instance N  |                 |
+|  |              |  |              |  |              |                 |
+|  | - TodoList   |  | - TodoList   |  | - TodoList   |                 |
+|  | - Autonomy   |  | - Autonomy   |  | - Autonomy   |                 |
+|  +------+-------+  +------+-------+  +------+-------+                 |
+|         |                 |                 |                         |
++---------+-----------------+-----------------+-------------------------+
+          |                 |                 |
++---------+-----------------+-----------------+-------------------------+
+|                       TIER 3: SPECIALISTS                             |
+|                                                                       |
+|  +----------+ +----------+ +----------+ +----------+ +----------+     |
+|  | Architect| | Planning |  |   Code   | | Research |  |  Debug   |   |
+|  |   Opus   | |   Opus   |  |   Opus   | |  Flash   |  |   Opus   |   |
+|  +----------+ +----------+ +----------+ +----------+ +----------+     |
+|                                                                       |
+|  Execute specific tasks, return results to Leonidas                   |
++-----------------------------------------------------------------------+
 ```
 
-### 2.2 Distribuição de Modelos
+### 2.2 Model Distribution
 
 <!-- @SCHEMA: Model Distribution -->
-| Função | Agente | Modelo | Justificativa |
-|--------|--------|--------|---------------|
-| **Main Thread** | Genesis Orchestrator | Claude Opus | Interface humana, decomposição estratégica |
-| **Sub-Orquestrador** | Leonidas | Gemini Pro | 1M tokens de contexto, execução autônoma |
-| **Planejamento** | Planning | Claude Opus | Raciocínio profundo, decisões estratégicas |
-| **Arquitetura** | Architect | Claude Opus | Design de sistema, specs only (no code) |
-| **Programação** | Code | Claude Opus | Qualidade de código, implementação |
-| **Pesquisa** | Research | Gemini Flash | Velocidade, exploração rápida |
-| **Debugging** | Debug | Claude Opus | Análise de root cause |
+| Role | Agent | Model | Justification |
+|------|-------|-------|---------------|
+| **Main Thread** | Orchestrator | Claude Opus | Human interface, strategic decomposition |
+| **Sub-Orchestrator** | Leonidas | Gemini Pro | 1M token context, autonomous execution |
+| **Planning** | Planning | Claude Opus | Deep reasoning, strategic decisions |
+| **Architecture** | Architect | Claude Opus | System design, specs only (no code) |
+| **Programming** | Code | Claude Opus | Code quality, implementation |
+| **Research** | Research | Gemini Flash | Speed, rapid exploration |
+| **Debugging** | Debug | Claude Opus | Root cause analysis |
 
-### 2.3 Responsabilidades por Camada
+### 2.3 Layer Responsibilities
 
 <!-- @SCHEMA: Layer Responsibilities -->
-| Camada | Responsabilidade Principal | NÃO Deve Fazer |
-|--------|---------------------------|----------------|
-| **Genesis** | Conversar com humano, decompor, consolidar | Executar tarefas complexas |
-| **Leonidas** | Orquestrar especialistas, gerenciar TodoList | Conversar com humano |
-| **Specialists** | Executar tarefas atômicas | Orquestrar outros agentes |
+| Layer | Primary Responsibility | Should NOT Do |
+|-------|------------------------|---------------|
+| **Orchestrator** | Talk to user, decompose, consolidate | Execute complex tasks directly |
+| **Leonidas** | Orchestrate specialists, manage TodoList | Talk to user directly |
+| **Specialists** | Execute atomic tasks | Orchestrate other agents |
 
 ---
 
-## 3. Princípios de Orquestração
+## 3. Orchestration Principles
 
 <!-- @RULE: Orchestration Principles -->
-1. **Decomposição Paralela (SOP-003)**: Requests complexos DEVEM ser decompostos em múltiplos Leonidas paralelos
-2. **Delegação Hierárquica**: Genesis → Leonidas → Specialists (nunca pular níveis)
-3. **Contexto Completo**: Cada agente delegado recebe contexto completo (não tem memória)
-4. **Autonomia Total**: Sub-agentes não perguntam, executam
-5. **Report Only Final**: Apenas resultados finais sobem para o nível acima
-6. **Paralelização Máxima**: Tasks independentes DEVEM rodar em paralelo
+1. **Parallel Decomposition (SOP-003)**: Complex requests MUST be decomposed into multiple parallel Leonidas instances
+2. **Hierarchical Delegation**: Orchestrator -> Leonidas -> Specialists (never skip levels)
+3. **Complete Context**: Each delegated agent receives complete context (has no memory)
+4. **Total Autonomy**: Sub-agents don't ask questions, they execute
+5. **Report Only Final**: Only final results go up to the level above
+6. **Maximum Parallelization**: Independent tasks MUST run in parallel
 
 ---
 
-## 4. Padrões de Delegação
+## 4. Delegation Patterns
 
-### 4.1 Genesis → Leonidas
+### 4.1 Orchestrator -> Leonidas
 
 <!-- @SCHEMA: Leonidas Mission Template -->
 ```markdown
-## LEONIDAS MISSION: [Título]
+## LEONIDAS MISSION: [Title]
 
 ### CONTEXT
-[Contexto completo - Leonidas não tem memória da conversa]
+[Complete context - Leonidas has no memory of conversation]
 
 ### OBJECTIVE
-[Deliverable único e claro]
+[Single clear deliverable]
 
 ### TASKS
-1. [Task específica]
-2. [Task específica]
+1. [Specific task]
+2. [Specific task]
 
 ### SUCCESS CRITERIA
-- [ ] [Critério verificável]
+- [ ] [Verifiable criterion]
 
 ### AUTONOMY GRANT
-Você tem AUTONOMIA TOTAL:
-- Crie seu próprio TodoList
-- Delegue para especialistas
-- Reporte APENAS o resumo final
+You have TOTAL AUTONOMY:
+- Create your own TodoList
+- Delegate to specialists
+- Report ONLY the final summary
 ```
 
-### 4.2 Leonidas → Specialists
+### 4.2 Leonidas -> Specialists
 
 <!-- @SCHEMA: Specialist Delegation -->
 ```markdown
-## TASK: [Título]
+## TASK: [Title]
 
 ### CONTEXT
-[Contexto específico para a tarefa]
+[Specific context for the task]
 
 ### DELIVERABLE
-[O que deve ser entregue]
+[What must be delivered]
 
 ### CONSTRAINTS
-[Limitações e padrões a seguir]
+[Limitations and patterns to follow]
 ```
 
 ---
 
-## 5. Fontes de Doutrina
+## 5. Documentation Sources
 
 <!-- @NOTE(sources): Sources -->
-### 5.1 nexus-os-dash
-- `.opencode/agent/` - Definições de agentes
-- `.opencode/specs/` - Especificações técnicas
-- `AGENTS.md` - Constituição do monorepo
-- `wiki/` - Base de conhecimento
-
-### 5.2 Documentos Chave
-<!-- @REF(AGENTS.md#sop-001): Source Citation Protocol -->
-<!-- @REF(AGENTS.md#sop-002): Inline Audit Protocol -->
-<!-- @REF(AGENTS.md#sop-003): Parallel Decomposition Protocol -->
+### 5.1 Key Documents
 <!-- @REF(.opencode/agent/orchestrator.md): Main Thread Definition -->
 <!-- @REF(.opencode/BOOTSTRAP.md): Session Initialization -->
 
@@ -168,8 +159,8 @@ Você tem AUTONOMIA TOTAL:
 
 ## 6. Changelog
 
-| Data | Mudança | Autor |
-|------|---------|-------|
-| 2026-01-07 | **v2.0.0**: Arquitetura 3 camadas com Genesis Orchestrator | OpenCode |
-| 2026-01-06 | v1.1.0: Adicionado modelo por função (Opus/Flash) | Founder Directive |
-| 2026-01-06 | v1.0.0: Documento inicial | OpenCode |
+| Date | Change | Author |
+|------|--------|--------|
+| 2026-01-07 | **v2.0.0**: Generalized for template use | OpenCode |
+| 2026-01-07 | v1.1.0: 3-tier architecture with Orchestrator | OpenCode |
+| 2026-01-06 | v1.0.0: Initial document | OpenCode |
