@@ -1,0 +1,185 @@
+# Agent Framework Specification Template
+# Version: 1.0.0
+# Usage: Copy this file to wiki/index-agents/{framework}/spec.yaml
+
+# ============================================================================
+# BASIC INFORMATION
+# ============================================================================
+framework:
+  name: ""                          # Official name (e.g., "LangChain")
+  version: ""                       # Version analyzed
+  repository: ""                    # GitHub/source URL
+  documentation: ""                 # Official docs URL
+  license: ""                       # License type
+  maintained_by: ""                 # Organization/Company
+  first_release: ""                 # YYYY-MM-DD
+  latest_release: ""                # YYYY-MM-DD
+  stars: 0                          # GitHub stars (if applicable)
+
+# ============================================================================
+# LANGUAGE & RUNTIME
+# ============================================================================
+language:
+  primary: ""                       # python | typescript | rust | etc
+  supported:
+    - language: ""
+      package_name: ""
+      package_manager: ""           # pip | npm | cargo | etc
+
+# ============================================================================
+# ARCHITECTURE TYPE
+# ============================================================================
+architecture:
+  type: ""                          # single-agent | multi-agent | orchestration | framework
+  pattern: ""                       # ReAct | Planner-Executor | DAG | Custom
+  execution_model: ""               # synchronous | asynchronous | streaming | hybrid
+  
+# ============================================================================
+# ENGINE / LOOP
+# ============================================================================
+engine:
+  name: ""                          # Name of the core engine class/module
+  location: ""                      # Path in source code
+  
+  loop_type: ""                     # while-loop | recursive | event-driven | generator
+  
+  phases:
+    - name: ""                      # Phase name (e.g., "think", "act", "observe")
+      description: ""
+      order: 1
+      optional: false
+      
+  max_iterations: 0                 # Default max iterations (0 = unlimited)
+  
+  termination_conditions:
+    - condition: ""                 # e.g., "tool_result_is_final"
+      description: ""
+      
+  supports_streaming: false
+  supports_async: false
+  supports_parallel_tools: false
+  supports_human_in_loop: false
+
+# ============================================================================
+# TOOL SYSTEM
+# ============================================================================
+tools:
+  definition_format: ""             # function-decorator | class | dict | json-schema
+  
+  registration:
+    method: ""                      # explicit | decorator | auto-discovery
+    location: ""                    # where tools are registered
+    
+  execution:
+    method: ""                      # direct-call | sandboxed | subprocess
+    async_support: false
+    parallel_support: false
+    timeout_handling: false
+    
+  result_handling:
+    format: ""                      # string | structured | any
+    error_propagation: ""           # exception | result-object | retry
+    
+  built_in_tools: []                # List of built-in tools
+
+# ============================================================================
+# MEMORY SYSTEM
+# ============================================================================
+memory:
+  short_term:
+    type: ""                        # buffer | sliding-window | summary
+    max_messages: 0
+    max_tokens: 0
+    
+  long_term:
+    supported: false
+    backends: []                    # vector-db | file | custom
+    retrieval_method: ""            # semantic | keyword | hybrid
+    
+  context_management:
+    method: ""                      # truncation | summarization | compression
+    automatic: false
+
+# ============================================================================
+# LLM PROVIDERS
+# ============================================================================
+llm_providers:
+  abstraction_layer: ""             # unified-interface | provider-specific | plugin
+  
+  supported:
+    - provider: "openai"
+      models: []
+      features: []                  # streaming | function-calling | vision
+      
+    - provider: "anthropic"
+      models: []
+      features: []
+      
+    - provider: "google"
+      models: []
+      features: []
+      
+  fallback_support: false
+  retry_logic: false
+  rate_limiting: false
+  cost_tracking: false
+
+# ============================================================================
+# PROTOCOLS
+# ============================================================================
+protocols:
+  implemented:
+    - name: ""                      # MCP | OpenAI-Functions | Custom
+      version: ""
+      description: ""
+      location: ""                  # Path in source
+      
+  custom_protocols: []
+
+# ============================================================================
+# UNIQUE FEATURES
+# ============================================================================
+unique_features:
+  - name: ""
+    description: ""
+    location: ""
+    
+# ============================================================================
+# CONFIGURATION
+# ============================================================================
+configuration:
+  method: ""                        # env-vars | config-file | code | mixed
+  
+  key_options:
+    - name: ""
+      type: ""
+      default: ""
+      description: ""
+
+# ============================================================================
+# EXTENSIBILITY
+# ============================================================================
+extensibility:
+  plugin_system: false
+  custom_llm_support: false
+  custom_tool_support: true
+  custom_memory_support: false
+  hooks_available: []               # before-action | after-action | on-error
+
+# ============================================================================
+# DEPENDENCIES
+# ============================================================================
+dependencies:
+  runtime: []                       # Required runtime dependencies
+  optional: []                      # Optional dependencies
+  peer: []                          # Peer dependencies
+  
+# ============================================================================
+# ANALYSIS METADATA
+# ============================================================================
+analysis:
+  date: ""                          # YYYY-MM-DD
+  analyst: "Antigravity"
+  confidence: ""                    # high | medium | low
+  notes: ""
+  version_analyzed: ""

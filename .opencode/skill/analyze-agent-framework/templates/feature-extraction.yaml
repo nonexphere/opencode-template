@@ -1,0 +1,244 @@
+# Feature Extraction Template
+# This file captures patterns, anti-patterns, and innovation opportunities
+# extracted from analyzing an AI agent framework
+
+# ============================================================================
+# FRAMEWORK IDENTIFICATION
+# ============================================================================
+framework:
+  name: ""
+  version: ""
+  analysis_date: ""
+  analyst: "Antigravity"
+  confidence: high | medium | low
+
+# ============================================================================
+# PATTERNS TO ADOPT
+# Features and patterns worth incorporating into NexusOS
+# ============================================================================
+patterns_to_adopt:
+
+  # ----- ENGINE PATTERNS -----
+  - name: ""
+    id: "PAT-ENG-001"
+    category: engine
+    subcategory: loop | state | streaming | error-handling
+    priority: must-have | nice-to-have | optional
+    
+    description: |
+      Detailed description of what this pattern does
+      and why it's valuable.
+    
+    implementation_details: |
+      How the framework implements this pattern.
+      Include technical details.
+    
+    code_example: |
+      ```python
+      # Relevant code snippet
+      ```
+    
+    source_files:
+      - path: "path/to/file.py"
+        lines: "100-150"
+        function: "function_name"
+    
+    nexus_adaptation: |
+      How we would adapt this for NexusOS.
+      Consider our architecture and constraints.
+    
+    complexity:
+      implementation: low | medium | high
+      maintenance: low | medium | high
+    
+    dependencies:
+      - "Depends on X"
+    
+    risks:
+      - "Potential risk or concern"
+    
+    related_patterns:
+      - "PAT-XXX-XXX"
+
+  # ----- TOOL PATTERNS -----
+  - name: ""
+    id: "PAT-TOOL-001"
+    category: tools
+    subcategory: definition | execution | validation | async | security
+    priority: must-have | nice-to-have | optional
+    # ... same fields as above
+
+  # ----- MEMORY PATTERNS -----
+  - name: ""
+    id: "PAT-MEM-001"
+    category: memory
+    subcategory: short-term | long-term | context | persistence
+    priority: must-have | nice-to-have | optional
+    # ... same fields as above
+
+  # ----- PROVIDER PATTERNS -----
+  - name: ""
+    id: "PAT-PROV-001"
+    category: provider
+    subcategory: abstraction | streaming | fallback | retry
+    priority: must-have | nice-to-have | optional
+    # ... same fields as above
+
+  # ----- PROTOCOL PATTERNS -----
+  - name: ""
+    id: "PAT-PROTO-001"
+    category: protocol
+    subcategory: mcp | function-calling | transport | auth
+    priority: must-have | nice-to-have | optional
+    # ... same fields as above
+
+# ============================================================================
+# PATTERNS TO AVOID (ANTI-PATTERNS)
+# Design decisions or implementations we should NOT replicate
+# ============================================================================
+patterns_to_avoid:
+
+  - name: ""
+    id: "ANTI-001"
+    category: engine | tools | memory | provider | protocol | architecture
+    severity: critical | high | medium | low
+    
+    description: |
+      What this anti-pattern is.
+    
+    why_avoid: |
+      Why this is problematic.
+      - Reason 1
+      - Reason 2
+    
+    observed_in:
+      - path: "path/to/file.py"
+        lines: "100-150"
+        description: "What's wrong here"
+    
+    consequences:
+      - "What happens if you do this"
+    
+    alternative: |
+      What to do instead.
+    
+    nexus_prevention: |
+      How we will prevent this in NexusOS.
+
+# ============================================================================
+# INNOVATION GAPS
+# Areas where we can do better than existing frameworks
+# ============================================================================
+innovation_gaps:
+
+  - area: ""
+    id: "GAP-001"
+    category: engine | tools | memory | provider | protocol | security | dx
+    
+    current_state: |
+      How existing frameworks handle this area.
+      What is the state of the art.
+    
+    limitations:
+      - "Limitation 1"
+      - "Limitation 2"
+    
+    nexus_opportunity: |
+      How NexusOS can do better.
+      Our innovative approach.
+    
+    proposed_solution: |
+      High-level solution description.
+    
+    complexity: low | medium | high
+    impact: high | medium | low
+    
+    validation_approach: |
+      How we would validate this innovation works.
+    
+    risks:
+      - "Risk of this approach"
+
+# ============================================================================
+# ADAPTER REQUIREMENTS
+# If we decide to build an adapter for this framework
+# ============================================================================
+adapter:
+  recommended: true | false
+  
+  rationale: |
+    Why we should/shouldn't build an adapter.
+  
+  integration_points:
+    - name: "Integration Point"
+      type: tools | memory | provider | protocol
+      complexity: low | medium | high
+      description: ""
+  
+  required_features:
+    - "Feature needed for adapter"
+  
+  compatibility_concerns:
+    - "Concern about compatibility"
+  
+  estimated_effort: "X person-days"
+
+# ============================================================================
+# NEXUS PROTOCOL IMPLICATIONS
+# How this analysis affects NexusOS's own protocol design
+# ============================================================================
+nexus_implications:
+
+  protocol_requirements:
+    - requirement: ""
+      source: "Learned from this framework"
+      priority: must-have | nice-to-have
+  
+  architecture_decisions:
+    - decision: ""
+      rationale: "Based on analysis of X"
+      confidence: high | medium | low
+  
+  api_design:
+    - aspect: ""
+      recommendation: ""
+      example: ""
+  
+  implementation_priorities:
+    - area: ""
+      priority: 1-10
+      rationale: ""
+
+# ============================================================================
+# SUMMARY METRICS
+# Quick reference metrics for comparison
+# ============================================================================
+metrics:
+  # Quantitative
+  lines_of_code: 0
+  num_classes: 0
+  num_functions: 0
+  test_coverage: "X%"
+  
+  # Qualitative (1-5 scale)
+  code_quality: 0
+  documentation_quality: 0
+  type_safety: 0
+  extensibility: 0
+  maintainability: 0
+  learning_curve: 0  # 1=easy, 5=hard
+  
+  # Counts
+  patterns_to_adopt: 0
+  patterns_to_avoid: 0
+  innovation_gaps: 0
+
+# ============================================================================
+# NOTES & OBSERVATIONS
+# ============================================================================
+notes:
+  - "General observation 1"
+  - "General observation 2"
+
+open_questions:
+  - "Question that needs further investigation"
